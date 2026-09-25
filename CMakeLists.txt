@@ -3,7 +3,9 @@ project(MachineControlSimulator)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(MachineControlSimulator src/main.cpp
-        src/main.cpp
-        src/main.cpp)
+find_package(Threads REQUIRED)
+
+add_executable(MachineControlSimulator src/main.cpp)
+target_link_libraries(MachineControlSimulator PRIVATE Threads::Threads)
