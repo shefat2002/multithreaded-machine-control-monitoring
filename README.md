@@ -1,24 +1,77 @@
-# MachineControlSimulator
+# Multithreaded Machine Control & Monitoring Simulator
 
-A C++ project using CMake build system.
+## Overview
 
-## Requirements
+A C++23 simulation of an industrial machine control system
+designed to demonstrate concurrent sensor processing,
+thread-safe communication and TCP-based machine control.
 
-- CMake 3.20 or higher
-- C++ compiler with C++23 support
-- JetBrains Rider
+## Features
 
-## Building and Running
+- Multithreaded sensor simulation
+- Thread-safe producer-consumer queue
+- Machine state management
+- Fault detection
+- TCP/IP communication
+- Multi-client handling
+- Thread-safe logging
+- Performance monitoring
 
-This project uses CMake Presets for configuration. Open the project in Rider and use the IDE's built-in CMake tools to build and run:
+## Architecture
+```
+                    ┌──────────────────────┐
+                    │    Control Client    │
+                    │                      │
+                    │ START / STOP / STATUS│
+                    └──────────┬───────────┘
+                               │
+                              TCP
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────┐
+│                 MACHINE CONTROLLER                   │
+│                                                      │
+│  ┌─────────────┐   ┌─────────────┐   ┌────────────┐ │
+│  │ Temperature │   │  Pressure   │   │  Position  │ │
+│  │   Thread    │   │   Thread    │   │   Thread   │ │
+│  └──────┬──────┘   └──────┬──────┘   └─────┬──────┘ │
+│         │                 │                 │        │
+│         └─────────────────┼─────────────────┘        │
+│                           ▼                          │
+│                  ┌─────────────────┐                │
+│                  │ Thread-Safe Queue│                │
+│                  └────────┬────────┘                │
+│                           ▼                          │
+│                  ┌─────────────────┐                │
+│                  │ Data Processor  │                │
+│                  └────────┬────────┘                │
+│                           ▼                          │
+│                  ┌─────────────────┐                │
+│                  │ Machine State   │                │
+│                  │    Manager      │                │
+│                  └────────┬────────┘                │
+│                           │                          │
+│                    ┌──────┴──────┐                   │
+│                    ▼             ▼                   │
+│                  NORMAL        ERROR                 │
+└──────────────────────────────────────────────────────┘
+```
 
-1. Open the project in Rider
-2. Rider will automatically detect the CMake configuration from `CMakePresets.json`
-3. Select the desired build configuration from the toolbar
-4. Use the Run/Debug buttons to build and execute the project
+## Technologies
 
-## Project Structure
+C++23
+STL
+Multithreading
+TCP/IP
+CMake
 
-- `src/` - Source files
-- `CMakeLists.txt` - CMake configuration
-- `CMakePresets.json` - CMake presets for IDE integration
+## Example
+
+## Concepts Demonstrated
+
+- Thread synchronization
+- Race condition prevention
+- Producer-consumer pattern
+- Socket programming
+- State management
+- Performance measurement

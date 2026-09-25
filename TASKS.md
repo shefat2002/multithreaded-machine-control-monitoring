@@ -2,9 +2,6 @@
 
 Context, architecture, goals, constraints: see [AGENTS.md](AGENTS.md).
 
-Timeline: implement by Sept 26, **apply Sept 27, 2026**; Sept 28 = deadline/backup day, not build day. Commit after each task (`feat: T2 thread-safe queue`).
-
-
 - [x] **T0** Fix `CMakeLists.txt`: C++23, single `src/main.cpp` entry (was listed 3×), `find_package(Threads)` + link `Threads::Threads`, `CMAKE_CXX_EXTENSIONS OFF`. Build verified via `out/`.
 - [ ] **T1** `models/SensorEvent.h`: `sensorId`, `timestamp`, `value`, `type`.
 - [ ] **T2** `concurrency/ThreadSafeQueue<T>`: `push`, blocking `pop`, `tryPop`, `size`, `close` (wakes waiters, ends consumer). Mutex + condition_variable.
