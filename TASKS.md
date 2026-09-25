@@ -3,7 +3,7 @@
 Context, architecture, goals, constraints: see [AGENTS.md](AGENTS.md).
 
 - [x] **T0** Fix `CMakeLists.txt`: C++23, single `src/main.cpp` entry (was listed 3×), `find_package(Threads)` + link `Threads::Threads`, `CMAKE_CXX_EXTENSIONS OFF`. Build verified via `out/`.
-- [ ] **T1** `models/SensorEvent.h`: `sensorId`, `timestamp`, `value`, `type`.
+- [x] **T1** `models/SensorEvent.h`: `sensorId`, `timestamp`, `value`, `type`.
 - [ ] **T2** `concurrency/ThreadSafeQueue<T>`: `push`, blocking `pop`, `tryPop`, `size`, `close` (wakes waiters, ends consumer). Mutex + condition_variable.
 - [ ] **T3** `TemperatureSensor`: value 24–28 °C, publish interval 100–500 ms, atomic stop flag.
 - [ ] **T4** `PressureSensor` (95–105 kPa) and `PositionSensor` (X/Y mm), same interface.

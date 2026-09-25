@@ -7,5 +7,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(Threads REQUIRED)
 
-add_executable(MachineControlSimulator src/main.cpp)
+add_executable(MachineControlSimulator
+        src/main.cpp
+        src/models/SensorEvent.h
+)
 target_link_libraries(MachineControlSimulator PRIVATE Threads::Threads)
