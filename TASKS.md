@@ -4,7 +4,6 @@ Context, architecture, goals, constraints: see [AGENTS.md](AGENTS.md).
 
 Timeline: implement by Sept 26, **apply Sept 27, 2026**; Sept 28 = deadline/backup day, not build day. Commit after each task (`feat: T2 thread-safe queue`).
 
-## Day 1 (Sept 25) — Core + multithreading
 
 - [ ] **T0** Fix `CMakeLists.txt`: C++17, single `src/main.cpp` entry (currently listed 3×), `find_package(Threads)`, add new sources as created.
 - [ ] **T1** `models/SensorEvent.h`: `sensorId`, `timestamp`, `value`, `type`.
@@ -16,7 +15,6 @@ Timeline: implement by Sept 26, **apply Sept 27, 2026**; Sept 28 = deadline/back
 
 Theory to learn alongside: process vs thread, race conditions, critical sections, mutex, condition_variable, producer–consumer, join/detach.
 
-## Day 2 (Sept 26) — State machine + TCP
 
 - [ ] **T7** `MachineState` enum + `MachineController`: start/stop/reset/emergencyStop with legal transitions only.
 - [ ] **T8** Fault detection: temperature ≥ 70 °C or pressure outside 90–110 kPa while Running → Error state + `[ALARM]` output.
@@ -25,8 +23,6 @@ Theory to learn alongside: process vs thread, race conditions, critical sections
 - [ ] **T11** Control client (second console app or `--client` mode): connect, send commands, print responses.
 
 Theory to learn alongside: TCP vs UDP, sockets, client–server, thread-per-connection, State pattern, Command pattern.
-
-## Day 3 (Sept 27) — Hardening + delivery
 
 - [ ] **T12** `util/Logger`: thread-safe, `logs/machine.log`, levels INFO/WARNING/ERROR, timestamped lines like `09:42:10 [INFO] Machine started`.
 - [ ] **T13** `util/Metrics`: events generated/received/processed/dropped, avg processing time, max queue size, commands processed; `PERFORMANCE` report block (periodic or on exit).
